@@ -1,6 +1,6 @@
 primes = [];
 number = 600851475143;
-numberSqrt = Math.round(Math.sqrt(600851475143));
+numberSqrt = parseInt(Math.sqrt(600851475143));
 
 function isPrime(num) {
     for (var i = 2; i < num; i++) {
