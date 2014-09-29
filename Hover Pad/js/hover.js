@@ -13,13 +13,24 @@ function createGrid(){
 
 // Generates grid according to user input's gridSize
 function generateGrid(gridSize){
-
+	var size = 700/ gridSize;
 	for (var i = 0; i < gridSize; i++) {
-		for (var j = 0; j < gridSize; j++) {
-			var box = $('<div class="box"></div>');
-			var size = 700 / gridSize;
-			box.css({'width': size, 'height': size})
-			$('#hoverpad').append(box);
-		}
+		var row = $('<div class="row"></div>');
+		row.css({
+			'width': 700,
+			'height': size,
+			'margin': '0px'
+		});
+		$('#hoverpad').append(row);
+
+		
 	}
 };	
+
+
+
+		// for (var j = 0; j < gridSize; j++) {
+		// 	var box = $('<div class="box"></div>');
+		// 	box.css({'width': size, 'height': size})
+		// 	$('#hoverpad').append(box);
+		// }
