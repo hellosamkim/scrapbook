@@ -1,0 +1,16 @@
+body {
+	background-color: #36393D;
+}
+
+form {
+	display: inline-block;
+}
+
+#options {
+	margin: 15px auto;
+	text-align: center;
+}
+
+#submit {
+	display: inline-block;
+}
