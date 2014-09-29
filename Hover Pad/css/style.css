@@ -15,11 +15,7 @@ form {
 	display: inline-block;
 }
 
-.row {
-	background-color: red;
-}
-
-#hoverpad {
+.hoverpad {
 	background-color: white;
 	height: 700px;
 	width: 700px;

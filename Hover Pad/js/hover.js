@@ -2,7 +2,7 @@ $('#submit').on('click', createGrid);
 
 // Saves user's input as a variable and generates grid
 function createGrid(){
-	$('#hoverpad').empty();
+	$('.hoverpad').empty();
 	var gridSize = document.getElementById('grid-size').value;
 	
 	if (gridSize > 100) {
@@ -21,10 +21,18 @@ function generateGrid(gridSize){
 			'height': size,
 			'margin': '0px'
 		});
-		$('#hoverpad').append(row);
+		$('.hoverpad').append(row)
 
-		
-	}
+		for (var j = 0; j < gridSize; j++) {
+			var boxes = $('<div class="boxes"></div>')
+			boxes.css({
+				'width': size,
+				'height': size,
+				'display': 'inline-block'
+			});
+			row.append(boxes)
+		}
+	};
 };	
 
 
