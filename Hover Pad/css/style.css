@@ -2,13 +2,14 @@ body {
 	background-color: #36393D;
 }
 
-form {
-	display: inline-block;
+#wrapper {
+	margin: auto;
+	text-align: center;
+	width: 700px;
 }
 
-#options {
-	margin: 15px auto;
-	text-align: center;
+form {
+	display: inline-block;
 }
 
 #submit {
@@ -20,5 +21,14 @@ form {
 	height: 700px;
 	width: 700px;
 	margin: 30px auto;
+  margin-bottom: 0px;
 	text-align: center;
+}
+
+.row {
+  width: 700px;
+  margin: 0px;
+  padding-bottom: 5px;
+  border-radius: 0 0 5px 5px;
+  background-color: #CDEB8B;
 }
