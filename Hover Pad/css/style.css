@@ -14,3 +14,20 @@ form {
 #submit {
 	display: inline-block;
 }
+
+.box {
+	background-color: red;
+	margin: 1px;
+}
+
+.spacing {
+	margin: -5px;
+}
+
+#hoverpad {
+	background-color: white;
+	height: 700px;
+	width: 700px;
+	margin: 30px auto;
+	text-align: center;
+}
