@@ -4,15 +4,15 @@ $('form').submit(hoverSetup);
 // Hover Pad's main setup
 function hoverSetup(){
 	$('.hoverpad').empty();
-	var gridSize = document.getElementById('grid-size').value;
+	gridSize = document.getElementById('grid-size').value;
 	
 	if (gridSize > 50) {
 		alert('Please pick a number between 1 ~ 50')
 	};
-
 	generateGrid(gridSize);
   colourPad();
-};
+  mode();
+}
 
 // Generates grid according to user input's gridSize
 function generateGrid(gridSize){
@@ -25,7 +25,7 @@ function generateGrid(gridSize){
 			'margin': '0px',
       'display': 'block'
 		});
-		$('.hoverpad').append(rows)
+		$('.hoverpad').append(rows);
 
 		for (var j = 0; j < gridSize; j++) {
 			var boxes = $('<div class="boxes"></div>')
@@ -38,10 +38,10 @@ function generateGrid(gridSize){
         'padding': 0
 			});
 			rows.append(boxes)
-		}
+		};
 	};
   colorSelect('black')
-};	
+}
 
 // Gives users option to pick and switch colours of their choice
 function colourPad(){
@@ -57,7 +57,7 @@ function colourPad(){
   $('#yellow').on("click", function(){
     colorSelect('yellow')
   });
-};
+}
 
 // Selects the colours for colour pad
 function colorSelect(color){
@@ -66,7 +66,23 @@ function colorSelect(color){
   });
 }
 
-
-
-
+// Hover Pad Modes
+function mode(){
+  $('#random').on('click',function(){
+    $('.boxes').mouseover(function() {
+      var rgb1 = Math.floor((Math.random() * 250) + 1);
+      var rgb2 = Math.floor((Math.random() * 250) + 1);
+      var rgb3 = Math.floor((Math.random() * 250) + 1);
+      var randColour = 'rgb(' + rgb1 + ',' + rgb2 + ',' + rgb3 + ')';
+      $(this).css('background-color', randColour);
+    });
+  });
+  $('#normal').on('click', function(){
+    colorSelect('black');
+  });
+  $('#clear').on('click', function(){
+    $('.hoverpad').empty();
+    generateGrid(gridSize);
+  })
+}
 
