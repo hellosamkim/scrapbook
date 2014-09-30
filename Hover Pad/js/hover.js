@@ -1,9 +1,5 @@
 // Creates Grid
-$('#submit').on('click', createGrid);
-// $(document).keypress(function(13) {
-//    Act on the event 
-//   createGrid;
-// });
+$('form').submit(createGrid);
 
 // Saves user's input as a variable and generates grid
 function createGrid(){
@@ -18,15 +14,16 @@ function createGrid(){
 
 // Generates grid according to user input's gridSize
 function generateGrid(gridSize){
-	var size = 700/ gridSize;
+	var size = (550/ gridSize) + "px";
 	for (var i = 0; i < gridSize; i++) {
-		var row = $('<div class="row"></div>');
-		row.css({
-			'width': 700,
+		var rows = $('<div class="rows"></div>');
+		rows.css({
+			'width': 550,
 			'height': size,
-			'margin': '0px'
+			'margin': '0px',
+      'display': 'block'
 		});
-		$('.hoverpad').append(row)
+		$('.hoverpad').append(rows)
 
 		for (var j = 0; j < gridSize; j++) {
 			var boxes = $('<div class="boxes"></div>')
@@ -34,9 +31,11 @@ function generateGrid(gridSize){
 				'width': size,
 				'height': size,
         'background-color': 'red',
-				'display': 'inline-block'
+				'display': 'inline-block',
+        'margin': 0,
+        'padding': 0
 			});
-			row.append(boxes)
+			rows.append(boxes)
 		}
 	};
 };	

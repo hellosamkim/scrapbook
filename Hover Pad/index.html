@@ -4,12 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Hover Pad</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 	<div id="wrapper">
-		<section class="hoverpad"></section>
-
+		<div class="hoverpad"></div>
 		<div class="row">
 			<div class="col-xs-6 col-md-4">
         <h4>Colour Pad</h4>   
@@ -19,11 +19,10 @@
       </div>
 			<div class="col-xs-6 col-md-4">
         <h4>Grid size</h4>
-        <form name="gridSizeForm">
+        <form name="gridSizeForm" onsubmit="return false">
           <input type="number" id="grid-size"/>
-
+          <button id="submit">Submit</button>
         </form>
-        <button id="submit">Submit</button>
       </div>
 		</div>
 	</div>

@@ -5,7 +5,7 @@ body {
 #wrapper {
 	margin: auto;
 	text-align: center;
-	width: 700px;
+	width: 550px;
 }
 
 form {
@@ -17,18 +17,18 @@ form {
 }
 
 .hoverpad {
-	background-color: white;
-	height: 700px;
-	width: 700px;
+	background-color: #36393D;
+	height: 550px;
+	width: 550px;
 	margin: 30px auto;
   margin-bottom: 0px;
 	text-align: center;
 }
 
 .row {
-  width: 700px;
-  margin: 0px;
+  width: 550px;
+  margin: 30px 0px;
+  border-radius: 5px;
   padding-bottom: 5px;
-  border-radius: 0 0 5px 5px;
   background-color: #CDEB8B;
 }
