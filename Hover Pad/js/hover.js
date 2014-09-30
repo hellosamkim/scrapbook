@@ -40,36 +40,31 @@ function generateGrid(gridSize){
 			rows.append(boxes)
 		}
 	};
-  $('.boxes').mouseover(function() {
-      $(this).css('background-color', 'black')
-  });
+  colorSelect('black')
 };	
 
 // Gives users option to pick and switch colours of their choice
 function colourPad(){
   $('#black').on("click", function(){
-    $('.boxes').mouseover(function() {
-      $(this).css('background-color', 'black')
-    });
+    colorSelect('black');
   });
   $('#red').on("click", function(){
-    $('.boxes').mouseover(function() {
-      $(this).css('background-color', 'red')
-    });
+    colorSelect('red')
   });
   $('#blue').on("click", function(){
-    $('.boxes').mouseover(function() {
-      $(this).css('background-color', 'blue')
-    });
+    colorSelect('blue')
   });
   $('#yellow').on("click", function(){
-    $('.boxes').mouseover(function() {
-      $(this).css('background-color', 'yellow')
-    });
+    colorSelect('yellow')
   });
 };
 
-
+// Selects the colours for colour pad
+function colorSelect(color){
+  $('.boxes').mouseover(function() {
+      $(this).css('background-color', color)
+  });
+}
 
 
 
