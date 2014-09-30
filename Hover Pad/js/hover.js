@@ -1,7 +1,7 @@
 // Creates Grid
 $('form').submit(hoverSetup);
 
-// Saves user's input as a variable and generates grid
+// Hover Pad's main setup
 function hoverSetup(){
 	$('.hoverpad').empty();
 	var gridSize = document.getElementById('grid-size').value;
@@ -11,7 +11,7 @@ function hoverSetup(){
 	};
 
 	generateGrid(gridSize);
-  start();
+  colourPad();
 };
 
 // Generates grid according to user input's gridSize
@@ -40,13 +40,38 @@ function generateGrid(gridSize){
 			rows.append(boxes)
 		}
 	};
+  $('.boxes').mouseover(function() {
+      $(this).css('background-color', 'black')
+  });
 };	
 
-function start(){
-  $('.boxes').mouseover(function(){
-    $(this).css({'background-color': 'black'})
+// Gives users option to pick and switch colours of their choice
+function colourPad(){
+  $('#black').on("click", function(){
+    $('.boxes').mouseover(function() {
+      $(this).css('background-color', 'black')
+    });
   });
-  $('.boxes').click(function(){
-    $(this).css({'background-color': 'white'})
+  $('#red').on("click", function(){
+    $('.boxes').mouseover(function() {
+      $(this).css('background-color', 'red')
+    });
+  });
+  $('#blue').on("click", function(){
+    $('.boxes').mouseover(function() {
+      $(this).css('background-color', 'blue')
+    });
+  });
+  $('#yellow').on("click", function(){
+    $('.boxes').mouseover(function() {
+      $(this).css('background-color', 'yellow')
+    });
   });
 };
+
+
+
+
+
+
+
