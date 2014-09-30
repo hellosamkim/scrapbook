@@ -1,7 +1,6 @@
 // Creates Grid
 $('form').submit(hoverSetup);
 
-
 // Saves user's input as a variable and generates grid
 function hoverSetup(){
 	$('.hoverpad').empty();
@@ -46,5 +45,8 @@ function generateGrid(gridSize){
 function start(){
   $('.boxes').mouseover(function(){
     $(this).css({'background-color': 'black'})
+  });
+  $('.boxes').click(function(){
+    $(this).css({'background-color': 'white'})
   });
 };
