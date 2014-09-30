@@ -1,15 +1,18 @@
 // Creates Grid
-$('form').submit(createGrid);
+$('form').submit(hoverSetup);
+
 
 // Saves user's input as a variable and generates grid
-function createGrid(){
+function hoverSetup(){
 	$('.hoverpad').empty();
 	var gridSize = document.getElementById('grid-size').value;
 	
-	if (gridSize > 100) {
-		alert('Please pick a number between 1 ~ 100')
+	if (gridSize > 50) {
+		alert('Please pick a number between 1 ~ 50')
 	};
+
 	generateGrid(gridSize);
+  start();
 };
 
 // Generates grid according to user input's gridSize
@@ -30,7 +33,7 @@ function generateGrid(gridSize){
 			boxes.css({
 				'width': size,
 				'height': size,
-        'background-color': 'red',
+        'background-color': 'white',
 				'display': 'inline-block',
         'margin': 0,
         'padding': 0
@@ -40,3 +43,8 @@ function generateGrid(gridSize){
 	};
 };	
 
+function start(){
+  $('.boxes').mouseover(function(){
+    $(this).css({'background-color': 'black'})
+  });
+};
