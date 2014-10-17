@@ -13,4 +13,4 @@ while fib3 < 4000000 do
 	fib2 = fib3
 end
 
-puts sum
+p sum
