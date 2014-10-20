@@ -8,19 +8,6 @@ class Rover
 		@direction = direction
 	end
 
-	def compass(direction)
-		case direction
-		when "N"
-			"North"
-		when "E"
-			"East"
-		when "S"
-			"South"
-		else
-			"West"
-		end
-	end
-
 	def display
 		if @x > @x_max || @y > @y_max
 			puts "I'm sorry, but your Rover has fallen out of grid..."
@@ -70,6 +57,19 @@ class Rover
 			else
 				movement(move)
 			end
+		end
+	end
+
+	def compass(direction)
+		case direction
+		when "N"
+			"North"
+		when "E"
+			"East"
+		when "S"
+			"South"
+		else
+			"West"
 		end
 	end
 end
