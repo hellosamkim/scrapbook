@@ -13,8 +13,21 @@ class Rover
 		@direction = direction
 	end
 
-	def to_s 
-		puts "The Rover is current at (#{@x}, #{@y}) facing " + @direction
+	def compass(direction)
+		case direction
+		when "N"
+			"North"
+		when "E"
+			"East"
+		when "S"
+			"South"
+		else
+			"West"
+		end
+	end
+
+	def display
+		puts "The Rover is current at (#{@x}, #{@y}) facing " + compass(@direction)
 	end
 
 	def rotation(rotatedarover)
@@ -42,8 +55,9 @@ class Rover
 			@x += 1
 		when "S"
 			@y -= 1
-		when "W"
+		else
 			@x -= 1
+		end
 	end
 
 	def direct
@@ -52,10 +66,9 @@ class Rover
 		moves = direct.split("")
 
 		moves.each do |move|
-			case move
-			when "L", "R"
+			if move == "L" || move == "R"
 				rotation(move)
-			when "M"
+			else
 				movement(move)
 			end
 		end
@@ -71,8 +84,9 @@ class RoverGame
 	print "Please enter where you'd like to place your Rover (ex: 4 5 N): "
 	positions = gets.chomp
 	position = positions.split(' ')
-	rov1 = Rover.new(position[0],position[1],position[2].capitalize!)
+	rov1 = Rover.new(position[0].to_i,position[1].to_i,position[2].capitalize!)
 	rov1.direct
+	rov1.display
 end
 
 RoverGame.new
