@@ -1,15 +1,10 @@
-class Grid
-	def initialize(max_x, max_y)
-		@max_x = max_x
-		@max_y = max_y
-	end
-end
-
 class Rover
   COMPASS = %w[N E S W]
-	def initialize(x, y, direction)
+	def initialize(x, y, x_max, y_max, direction)
 		@x = x
 		@y = y
+		@x_max = x_max
+		@y_max = y_max
 		@direction = direction
 	end
 
@@ -27,7 +22,11 @@ class Rover
 	end
 
 	def display
-		puts "The Rover is current at (#{@x}, #{@y}) facing " + compass(@direction)
+		if @x > @x_max || @y > @y_max
+			puts "I'm sorry, but your Rover has fallen out of grid..."
+		else
+			puts "The Rover is current at (#{@x}, #{@y}) facing " + compass(@direction)
+		end
 	end
 
 	def rotation(rotatedarover)
@@ -80,11 +79,10 @@ class RoverGame
 	max_x = gets.chomp
 	print "Please enter the max Y coordinate: "
 	max_y = gets.chomp
-	Grid.new(max_x, max_y)
 	print "Please enter where you'd like to place your Rover (ex: 4 5 N): "
 	positions = gets.chomp
 	position = positions.split(' ')
-	rov1 = Rover.new(position[0].to_i,position[1].to_i,position[2].capitalize!)
+	rov1 = Rover.new(position[0].to_i, position[1].to_i, max_x.to_i, max_y.to_i, position[2].capitalize!)
 	rov1.direct
 	rov1.display
 end
