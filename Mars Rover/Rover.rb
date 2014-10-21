@@ -1,4 +1,6 @@
 class Rover
+	attr_reader :x, :y, :x_max, :y_max, :direction
+	
   COMPASS = %w[N E S W]
 	def initialize(x, y, x_max, y_max, direction)
 		@x = x
@@ -84,7 +86,7 @@ class RoverGame
 	position = positions.split(' ')
 	rov1 = Rover.new(position[0].to_i, position[1].to_i, max_x.to_i, max_y.to_i, position[2].capitalize!)
 	rov1.direct
-	rov1.display
+	puts rov1.x
 end
 
 RoverGame.new

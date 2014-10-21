@@ -1,4 +1,6 @@
 class Contact
+  attr_accessor :first_name, :last_name, :email, :social_media
+  
 	def initialize(first_name, last_name, email, social_media)
 		@first_name = first_name
 		@last_name = last_name

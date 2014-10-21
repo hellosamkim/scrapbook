@@ -24,7 +24,7 @@ class CRM
 	end
 
   def call_option(input)
-    case selection
+    case input
     when 1
       add_new_contact
     when 2
@@ -36,12 +36,15 @@ class CRM
     when 5
       display_by_attribute
     when 6
-      puts "Thankss for Using."
-      puts "Made by Sam Kim"
-      puts "From Toronto with <3"
+      puts "------------------------------"
+      puts "Thanks for using--------------"
+      puts "-------------CRM App----------"
+      puts "-------------------by Sam Kim-"
+      puts "------------------------------"
     else
-      system "clear"
       puts "Please input a valid selection"
+      sleep 1.3
+      system "clear"
       main_menu
     end
   end
