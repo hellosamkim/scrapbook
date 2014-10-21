@@ -1,7 +1,7 @@
 class Rolodex
 	def initialize
 		@contacts = []
-		@id = 10000
+		@id = 1
 	end
 
 	def contacts

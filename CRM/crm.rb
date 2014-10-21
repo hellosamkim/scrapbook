@@ -4,6 +4,7 @@ require_relative "rolodex"
 class CRM
   def initialize
     system "clear"
+    @rolodex = Rolodex.new
   end
 
 	def print_main_menu
@@ -36,6 +37,7 @@ class CRM
     when 5
       display_by_attribute
     when 6
+      system "clear"
       puts "------------------------------"
       puts "Thanks for using--------------"
       puts "-------------CRM App----------"
@@ -43,11 +45,33 @@ class CRM
       puts "------------------------------"
     else
       puts "Please input a valid selection"
-      sleep 1.3
-      system "clear"
-      main_menu
+      clear_screen
     end
   end
+
+  def clear_screen
+    sleep 1.3
+    system "clear"
+    main_menu
+  end
+
+  def add_new_contact
+    system "clear"
+    print "Please enter your First Name: "
+    first_name = gets.chomp
+    print "Please enter your Last Name: "
+    last_name = gets.chomp
+    print "Please enter your E-Mail: "
+    email = gets.chomp
+    print "Please enter your Social Media Account: "
+    social_media = gets.chomp
+
+    contact = Contact.new(first_name, last_name, email, social_media)
+    @rolodex.add_contact(contact)
+    puts "Contact has successfully been added."
+    clear_screen
+  end
+
 end
 crm = CRM.new
 crm.main_menu
