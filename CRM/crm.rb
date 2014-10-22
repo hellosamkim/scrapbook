@@ -81,7 +81,7 @@ class CRM
       puts
       x += 1
     end
-    puts "-----------------------------------"
+    puts "-----------------------------------------------"
     puts "Options Available:  Modify | Delete | Main Menu"
     print "Please Choose Contact and Option (ex: 1 modify // main menu): "
     options = gets.chomp.downcase
@@ -106,6 +106,16 @@ class CRM
     sleep 1.1
     system "clear"
     display_contacts
+  end
+
+  def display_by_attribute
+    system "clear"
+    puts "Search Contact"
+    puts "Search Options: First Name, Last Name, Email, Social Media"
+    print "Search (ex: First Name, Sam // Email, sam@kim.com): "
+    input = gets.chomp.downcase
+    search_options = input.split(", ")
+    puts search_options
   end
 end
 

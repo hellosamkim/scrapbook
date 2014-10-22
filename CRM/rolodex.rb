@@ -19,8 +19,8 @@ class Rolodex
 		@contacts.each do |contact|
 			if contact.id == id
 				print "You sure u want to change the contact, #{contact.first_name} #{contact.last_name}? (Y/N): "
-				answer = gets.chomp.upcase
-				if answer == "Y"
+				input = gets.chomp.upcase
+				if input == "Y"
 			    print "Please enter New First Name: "
 			    first_name = gets.chomp.capitalize!
 			    print "Please enter New Last Name: "
@@ -29,6 +29,7 @@ class Rolodex
 			    email = gets.chomp
 			    print "Please enter New Social Media Account (@example): "
 			    social_media = gets.chomp
+
 			    contact.first_name = first_name
 			    contact.last_name = last_name
 			    contact.email = email
