@@ -77,8 +77,8 @@ class CRM
 
     @rolodex.contacts.each do |contact|
       puts "(ID ##{contact.id})  Name: #{contact.first_name} #{contact.last_name}" 
-      puts "     E-mail: #{contact.email}" 
-      puts "     Social Media: #{contact.social_media}"
+      puts "         E-mail: #{contact.email}" 
+      puts "         Social Media: #{contact.social_media}"
       puts
       x += 1
     end
@@ -119,7 +119,7 @@ class CRM
     if option[1] == "modify"
       modify_contact(option[0].to_i)
     elsif option[1] == "delete"
-      delete_contact(option[0]2.to_i)
+      delete_contact(option[0].to_i)
     else
       puts "Returning to Main Menu..."
       clear_screen

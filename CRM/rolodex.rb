@@ -56,8 +56,6 @@ class Rolodex
 			@contacts.each do |contact|
 				if contact.first_name == search
 					display_contact(contact.id, contact.first_name, contact.last_name, contact.email, contact.social_media)
-				else
-					not_found
 				end
 			end
 
@@ -65,8 +63,6 @@ class Rolodex
 			@contacts.each do |contact|
 				if contact.last_name == search
 					display_contact(contact.id, contact.first_name, contact.last_name, contact.email, contact.social_media)
-				else
-					not_found
 				end
 			end
 
@@ -74,8 +70,6 @@ class Rolodex
 			@contacts.each do |contact|
 				if contact.email == search
 					display_contact(contact.id, contact.first_name, contact.last_name, contact.email, contact.social_media)
-				else
-					not_found
 				end
 			end
 
@@ -83,14 +77,8 @@ class Rolodex
 			@contacts.each do |contact|
 				if contact.social_media == search
 					display_contact(contact.id, contact.first_name, contact.last_name, contact.email, contact.social_media)
-				else
-					not_found
 				end
 			end
-
-		else
-			puts "Did you make sure you entered the correct inputs?"
-			display_by_attribute
 		end
 	end
 
@@ -99,9 +87,5 @@ class Rolodex
     puts "    	 E-mail: #{email}" 
     puts "	 Social Media: #{sm}"
     puts
-	end
-
-	def not_found
-		puts "I'm sorry, but your request does not match our database."
 	end
 end
