@@ -12,5 +12,6 @@ class Rolodex
 		contact.id = @id
 		@contacts << contact
 		@id += 1
+    puts "Contact has successfully been added."
 	end
 end
