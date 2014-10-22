@@ -78,9 +78,34 @@ class CRM
       puts "(#{x})  Name: #{contact.first_name} #{contact.last_name}" 
       puts "     E-mail: #{contact.email}" 
       puts "     Social Media: #{contact.social_media}"
+      puts
       x += 1
     end
-    
+    puts "-----------------------------------"
+    puts "Options Available:  Modify | Delete | Main Menu"
+    print "Please Choose Contact and Option (ex: 1 modify // main menu): "
+    options = gets.chomp.downcase
+    option = options.split(" ")
+    if option[1] == "modify"
+      modify_contact(option[0].to_i)
+    elsif option[1] == "delete"
+      delete_contact(option[0].to_i)
+    else
+      puts "Returning to Main Menu..."
+      clear_screen
+    end
+  end
+
+  def modify_contact(id)
+    @rolodex.modify_contact(id)
+    clear_screen
+  end
+
+  def delete_contact(id)
+    @rolodex.delete_contact(id)
+    sleep 1.1
+    system "clear"
+    display_contacts
   end
 end
 
