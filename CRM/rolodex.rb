@@ -1,4 +1,6 @@
 class Rolodex
+  attr_accessor :id, :first_name, :last_name, :email, :social_media
+
 	def initialize
 		@contacts = []
 		@id = 1
@@ -43,5 +45,63 @@ class Rolodex
 	def delete_contact(id)
 		@contacts.delete_if {|contact| contact.id == id}
 		puts "Contact has successfully been deleted"
+	end
+
+	def display_by_attribute(attr, search)
+		system "clear"
+		puts "Your Results for #{search}"
+		search.capitalize!
+		case attr.to_i
+		when 1
+			@contacts.each do |contact|
+				if contact.first_name == search
+					display_contact(contact.id, contact.first_name, contact.last_name, contact.email, contact.social_media)
+				else
+					not_found
+				end
+			end
+
+		when 2
+			@contacts.each do |contact|
+				if contact.last_name == search
+					display_contact(contact.id, contact.first_name, contact.last_name, contact.email, contact.social_media)
+				else
+					not_found
+				end
+			end
+
+		when 3
+			@contacts.each do |contact|
+				if contact.email == search
+					display_contact(contact.id, contact.first_name, contact.last_name, contact.email, contact.social_media)
+				else
+					not_found
+				end
+			end
+
+		when 4
+			@contacts.each do |contact|
+				if contact.social_media == search
+					display_contact(contact.id, contact.first_name, contact.last_name, contact.email, contact.social_media)
+				else
+					not_found
+				end
+			end
+
+		else
+			puts "Did you make sure you entered the correct inputs?"
+			display_by_attribute
+		end
+	end
+
+	def display_contact(id, fname, lname, email, sm)
+		puts "(ID ##{id})  Name: #{fname} #{lname}" 
+    puts "    	 E-mail: #{email}" 
+    puts "	 Social Media: #{sm}"
+    puts
+	end
+
+	def not_found
+		puts "I'm sorry, but your request does not match our database."
 	end
 end

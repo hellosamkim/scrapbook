@@ -44,13 +44,13 @@ class CRM
     else
       puts "Please input a valid selection"
       clear_screen
+      main_menu
     end
   end
 
   def clear_screen
     sleep 1.1
     system "clear"
-    main_menu
   end
 
   def add_new_contact
@@ -67,6 +67,7 @@ class CRM
     contact = Contact.new(first_name, last_name, email, social_media)
     @rolodex.add_contact(contact)
     clear_screen
+    main_menu
   end
 
   def display_contacts
@@ -75,47 +76,55 @@ class CRM
     puts "Contact List"
 
     @rolodex.contacts.each do |contact|
-      puts "(#{x})  Name: #{contact.first_name} #{contact.last_name}" 
+      puts "(ID ##{contact.id})  Name: #{contact.first_name} #{contact.last_name}" 
       puts "     E-mail: #{contact.email}" 
       puts "     Social Media: #{contact.social_media}"
       puts
       x += 1
     end
-    puts "-----------------------------------------------"
-    puts "Options Available:  Modify | Delete | Main Menu"
-    print "Please Choose Contact and Option (ex: 1 modify // main menu): "
-    options = gets.chomp.downcase
-    option = options.split(" ")
-    if option[1] == "modify"
-      modify_contact(option[0].to_i)
-    elsif option[1] == "delete"
-      delete_contact(option[0].to_i)
-    else
-      puts "Returning to Main Menu..."
-      clear_screen
-    end
+    contact_options
   end
 
   def modify_contact(id)
     @rolodex.modify_contact(id)
     clear_screen
+    main_menu
   end
 
   def delete_contact(id)
     @rolodex.delete_contact(id)
-    sleep 1.1
-    system "clear"
-    display_contacts
+    clear_screen
+    main_menu
   end
 
   def display_by_attribute
     system "clear"
     puts "Search Contact"
-    puts "Search Options: First Name, Last Name, Email, Social Media"
-    print "Search (ex: First Name, Sam // Email, sam@kim.com): "
+    puts "Search Options: (1) First Name, (2) Last Name, (3) Email, (4) Social Media"
+    puts "To Return to Main Menu, type: main menu"
+    print "Search (ex: 1, Sam // 3, sam@kim.com): "
     input = gets.chomp.downcase
+    puts "-------------------------------"
     search_options = input.split(", ")
-    puts search_options
+    @rolodex.display_by_attribute(search_options[0], search_options[1])
+    contact_options
+  end
+
+  def contact_options
+    puts "-----------------------------------------------"
+    puts "Options Available:  Modify | Delete | Main Menu"
+    print "Please Choose Contact ID and Option (ex: 1 modify // main menu): "
+    options = gets.chomp.downcase
+    option = options.split(" ")
+    if option[1] == "modify"
+      modify_contact(option[0].to_i)
+    elsif option[1] == "delete"
+      delete_contact(option[0]2.to_i)
+    else
+      puts "Returning to Main Menu..."
+      clear_screen
+      main_menu
+    end
   end
 end
 
