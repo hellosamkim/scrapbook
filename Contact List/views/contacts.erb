@@ -1,1 +1,7 @@
-<p>Contact List</p>
+<h1>Contact List</p>
+
+<ul>
+<% @contacts.each do |contact| %>
+  <li><%= contact.first_name %> <%= contact.last_name %></li>  
+<% end %>
+</ul>
