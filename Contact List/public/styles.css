@@ -2,6 +2,11 @@ main {
   text-align: center;
 }
 
+main h1 {
+  text-align: left;
+  margin-left: 30px;
+}
+
 .form-control {
   width: 200px;
   text-align: center;
@@ -14,4 +19,30 @@ main {
 #back {
   text-decoration: none;
   color: #333;
+}
+
+.list-group {
+  font-size: 2rem;
+  margin-top: 0px;
+  margin-bottom: 2px;
+}
+
+#heading {
+  font-size: 2.5rem;
+}
+
+#nav-add-contacts {
+  margin-right: 15px;
+}
+
+#heading-link {
+  text-decoration: none;
+}
+
+#heading-link:visited {
+  color: #777;
+}
+
+#heading-link:hover {
+  color: #555;
 }
