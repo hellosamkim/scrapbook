@@ -1,5 +1,5 @@
 class Rolodex
-  attr_accessor :id, :first_name, :last_name, :email, :social_media
+  attr_accessor :id, :first_name, :last_name, :email, :social_media, :phone_number
 
   def initialize
     @contacts = []
