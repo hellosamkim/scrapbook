@@ -86,7 +86,7 @@ class RoverGame
 	position = positions.split(' ')
 	rov1 = Rover.new(position[0].to_i, position[1].to_i, max_x.to_i, max_y.to_i, position[2].capitalize!)
 	rov1.direct
-	puts rov1.x
+	puts rov1.display
 end
 
 RoverGame.new
