@@ -1,3 +1,8 @@
+body {
+  background-color: #302B2F;
+  color: #DFDBD3;
+}
+
 main {
   text-align: center;
 }
@@ -5,6 +10,11 @@ main {
 main h1 {
   text-align: left;
   margin-left: 30px;
+}
+
+.nav, .navbar-default {
+  background-color: #DFDBD3;
+  color: #302B2F;
 }
 
 .form-control {
@@ -33,16 +43,40 @@ main h1 {
 
 #nav-add-contacts {
   margin-right: 15px;
+  color: #302B2F;
 }
 
 #heading-link {
   text-decoration: none;
+  color: #302B2F;
 }
 
 #heading-link:visited {
+  color: #302B2F;
+}
+
+#heading-link:hover, #nav-add-contacts:hover {
   color: #777;
 }
 
-#heading-link:hover {
-  color: #555;
+#footer-link {
+  text-decoration: none;
+}
+
+#footer-link:visited {
+  color: #DFDBD3;
+}
+
+#footer-link:hover {
+  color: #BEB6A6;
+}
+
+button {
+  width: 70px;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 15px;
 }
