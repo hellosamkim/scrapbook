@@ -1,11 +1,32 @@
-<h2>Create new Contact</h2>
+<section class="contact-create">
+  <h2>Create new Contact</h2>
 
-<form action="/" method="post">
-  <input type="text" name="first_name" placeholder="First Name" class="form-control">
-  <input type="text" name="last_name" placeholder="Last Name" class="form-control">
-  <input type="text" name="phone_number" placeholder="Phone Number" class="form-control">
-  <input type="text" name="email" placeholder="E-mail" class="form-control">
-  <input type="text" name="social_media" placeholder="Social Media" class="form-control">
-  <button class="btn btn-default"><a href="/" id="back">Back</a></button>
-  <input type="submit" name="submit" class="btn btn-default">
-</form>
+  <div class="form-container">
+    <form action="/" method="post">
+      <div class="field">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" placeholder="Sam" class="form-control" id="first_name">
+      </div>
+      <div class="field">
+      <label for="first_name">Last Name:</label>
+        <input type="text" name="last_name" placeholder="Kim" class="form-control" id="last_name">
+      </div>
+      <div class="field">
+      <label for="first_name">Phone Number:</label>
+        <input type="text" name="phone_number" placeholder="416-111-1234" class="form-control" id="phone_number">
+      </div>
+      <div class="field">
+      <label for="first_name">E-Mail:</label>
+        <input type="text" name="email" placeholder="hello@example.com" class="form-control" id="email">
+      </div>
+      <div class="field">
+      <label for="first_name">Social Media:</label>
+        <input type="text" name="social_media" placeholder="@hellosamkim" class="form-control" id="social_media">
+      </div>
+      <div class="button-section">
+        <button class="btn btn-default"><a href="/" id="back">Back</a></button>
+        <input type="submit" name="submit" class="btn btn-default">
+      </div>
+    </form>
+  </div>
+</section>

@@ -18,12 +18,12 @@ main h1 {
 }
 
 .form-control {
-  width: 200px;
-  text-align: center;
+  width: 64%;
+  text-align: left;
   margin-top: 3px;
   margin-bottom: 3px;
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: 0px;
+  display: inline-block;
 }
 
 #back {
@@ -79,4 +79,26 @@ footer {
   position: absolute;
   width: 100%;
   bottom: 15px;
+}
+
+.field {
+  text-align: right;
+}
+
+.form-container {
+  width: 300px;
+  margin: 20px auto 0 auto;
+}
+
+.center-form {
+  margin-left: 50px
+}
+
+.button-section {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.contact-create {
+  margin-top: 30px;
 }
