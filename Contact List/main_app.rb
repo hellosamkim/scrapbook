@@ -15,5 +15,6 @@ end
 post '/' do
   new_contact = Contact.new(params[:first_name].capitalize, params[:last_name].capitalize, params[:phone_number], params[:email], params[:social_media])
   @@rolodex.add_contact(new_contact)
+  puts params
   redirect to('/')
 end
