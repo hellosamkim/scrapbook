@@ -4,19 +4,20 @@
   <meta charset="UTF-8">
   <title>Contact List</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 <body>
   <main>
     <nav class="navbar navbar-default" role="navigation">
-      <div class="navbar-brand" id="heading"><a href="/" id="heading-link">Contact List</a></div>
+      <div class="navbar-brand" id="heading"><a href="/" id="heading-link">Contact List <i class="fa fa-users"></i></a></div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/new" id="nav-add-contacts">Add Contacts</a></li>
+        <li><a href="/new" id="nav-add-contacts"><i class="fa fa-plus-circle"></i> Add Contacts</a></li>
       </ul>
     </nav>
     <%= yield %>
     <footer>
-      <p>© Contact List 2014. Made by <a href="http://samkim.co" id="footer-link">Sam Kim <span style="color: #C4594B">★</span></a></p>
+      <p><i class="fa fa-copyright"></i> Contact List 2014. Made by <a href="http://samkim.co" id="footer-link">Sam Kim <span style="color: #C4594B">★</span></a></p>
     </footer>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   </main>
