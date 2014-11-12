@@ -1,6 +1,6 @@
 body {
   background-color: #302B2F;
-  color: #DFDBD3;
+  color: #C9C2B5;
 }
 
 main {
@@ -13,8 +13,9 @@ main h1 {
 }
 
 .nav, .navbar-default {
-  background-color: #DFDBD3;
+  background-color: #C9C2B5;
   color: #302B2F;
+  border-color: #C9C2B5;
 }
 
 .form-control {
@@ -64,7 +65,7 @@ main h1 {
 }
 
 #footer-link:visited {
-  color: #DFDBD3;
+  color: #C9C2B5;
 }
 
 #footer-link:hover {
@@ -101,4 +102,19 @@ footer {
 
 .contact-create {
   margin-top: 30px;
+}
+
+.list {
+  color: #C9C2B5;
+  -webkit-transition: all 300ms ease;
+  width: 300px;
+}
+
+.list:visited {
+  color: #C9C2B5;
+}
+
+.list:hover {
+  text-decoration: none;
+  color: #E9E6E1;
 }

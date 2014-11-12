@@ -1,7 +1,7 @@
 <h3>List of Contacts</h3>
 
 <ul class="list-group">
-<% @@rolodex.contacts.each do |contact| %>
-  <li class="list-group item"><%= contact.first_name %> <%= contact.last_name %></li>  
+<% @contacts.each do |contact| %>
+  <li class="list-group item"><a href="/<%= contact.id %>" class="list"><%= contact.first_name %> <%= contact.last_name %></a></li>
 <% end %>
 </ul>

@@ -11,13 +11,14 @@ class Contact
   property :last_name, String
   property :email, String
   property :phone_number, String
-  property :social_media. String
+  property :social_media, String
 end
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
 get '/' do
+  @contacts = Contact.all
   erb :index
 end
 
@@ -26,8 +27,22 @@ get '/new' do
 end
 
 post '/' do
-  new_contact = Contact.new(params[:first_name].capitalize, params[:last_name].capitalize, params[:phone_number], params[:email], params[:social_media])
-  @@rolodex.add_contact(new_contact)
+  contact = Contact.create(
+    :first_name => params[:first_name].capitalize!,
+    :last_name => params[:last_name].capitalize!,
+    :email => params[:email],
+    :phone_number => params[:phone_number],
+    :social_media => params[:social_media]
+  )
   puts params
   redirect to('/')
+end
+
+get '/:id' do
+  @contact = Contact.get(params[:id].to_i)
+  if @contact
+    erb :show_contact
+  else
+    raise Sinatra::NotFound
+  end
 end
