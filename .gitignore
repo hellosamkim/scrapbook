@@ -1,0 +1,5 @@
+# IGNORE DS_Store & SQLITE databses.
+
+/*.sqlite3
+/*.sqlite-journal
+/.DS_Store
