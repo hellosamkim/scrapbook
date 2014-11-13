@@ -151,7 +151,7 @@ footer {
 .edit-1, .edit-2 {
   display: inline-block;
   margin: 5px;
-  font-size: 1.4rem
+  font-size: 1.6rem
 }
 
 .edit-link {
@@ -159,7 +159,21 @@ footer {
   -webkit-transition: all 300ms ease;
 }
 
-.edit-link:hover {
+.edit-link:hover, .delete-link:hover {
   color: #eff2ef;
   text-decoration: none;
+}
+
+.delete-link {
+  border: none;
+  background: none;
+  display: inline;
+  color: #8EA38F;
+  -webkit-transition: all 300ms ease;
+  padding: 0px;
+  font-size: 1.6rem;
+}
+
+.delete-form {
+  display: inline-block;
 }

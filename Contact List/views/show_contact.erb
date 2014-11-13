@@ -18,4 +18,8 @@
 </section>
 
 <div class="edit-1"><i class="fa fa-pencil-square-o"></i><a href="/<%= @contact.id %>/edit" class="edit-link"> Edit</a></div>
-<div class="edit-2"><i class="fa fa-times-circle"></i><a href="/<%= @contact.id %>/edit" class="edit-link"> Delete</a></div>
+<div class="edit-2"><i class="fa fa-times-circle"></i>
+<form action="/<%= @contact.id %>" method="post" class="delete-form">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" name="Delete" value="Delete" class="delete-link">
+</div>

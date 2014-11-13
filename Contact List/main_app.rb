@@ -71,3 +71,14 @@ put '/:id' do
     raise Sinatra::NotFound
   end
 end
+
+delete '/:id' do
+  @contact = Contact.get(params[:id].to_i)
+  if @contact
+    @contact.destroy
+
+    redirect to ('/')
+  else
+    raise Sinatra::NotFound
+  end
+end
