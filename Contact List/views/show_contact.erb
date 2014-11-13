@@ -4,15 +4,17 @@
   <table class="table" style="width:340px">
     <tr>
       <td>Phone Number: </td>
-      <td><%= @contact.phone_number %></td>
+      <td class="td-right"><%= @contact.phone_number %></td>
     </tr>
     <tr>
       <td>E-Mail: </td>
-      <td><%= @contact.email %></td>
+      <td class="td-right"><%= @contact.email %></td>
     </tr>
     <tr>
-      <td>Social Media: </td>
-      <td><%= @contact.social_media %></td>
+      <td>Twitter: </td>
+      <td class="td-right"><a href="http://www.twitter.com/<%= @contact.social_media.slice(1..-1) %>" class="social-link"><%= @contact.social_media %></a></td>
     </tr>
   </table>
+
+  <a href="/<%= @contact.id %>/edit">Edit</a>
 </section>

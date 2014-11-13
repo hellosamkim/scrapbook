@@ -34,7 +34,6 @@ post '/' do
     :phone_number => params[:phone_number],
     :social_media => params[:social_media]
   )
-  puts params
   redirect to('/')
 end
 
@@ -42,6 +41,32 @@ get '/:id' do
   @contact = Contact.get(params[:id].to_i)
   if @contact
     erb :show_contact
+  else
+    raise Sinatra::NotFound
+  end
+end
+
+get '/:id/edit' do
+  @contact = Contact.get(params[:id].to_i)
+  if @contact
+    erb :edit_contact
+  else
+    raise Sinatra::NotFound
+  end
+end
+
+put '/:id' do
+  @contact = Contact.get(params[:id].to_i)
+  if @contact
+    @contact.first_name = params[:first_name]
+    @contact.last_name = params[:last_name]
+    @contact.email = params[:email]
+    @contact.phone_number = params[:phone_number]
+    @contact.social_media = params[:social_media]
+
+    @contact.save
+
+    redirect to ('/')
   else
     raise Sinatra::NotFound
   end

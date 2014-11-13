@@ -1,8 +1,9 @@
 <section class="contact-create">
-  <h2>Create New Contact</h2>
+  <h2>Edit <%= @contact.first_name %> <%= @contact.last_name %> ?</h2>
 
   <div class="form-container">
-    <form action="/" method="post">
+    <form action="/<%= @contact.id %>" method="post">
+      <input name="_method" value="put" type="hidden"/>
       <div class="field">
         <label for="first_name">First Name:</label>
         <input type="text" name="first_name" placeholder="Sam" class="form-control" id="first_name">
@@ -25,7 +26,7 @@
       </div>
       <div class="button-section">
         <button class="btn btn-default"><a href="/" id="back">Back</a></button>
-        <input type="submit" name="submit" class="btn btn-default" value="Add">
+        <input type="submit" name="submit" class="btn btn-default" value="Edit">
       </div>
     </form>
   </div>
