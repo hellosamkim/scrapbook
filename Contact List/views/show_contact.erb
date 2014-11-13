@@ -12,9 +12,10 @@
     </tr>
     <tr>
       <td>Twitter: </td>
-      <td class="td-right"><a href="http://www.twitter.com/<%= @contact.social_media.slice(1..-1) %>" class="social-link"><%= @contact.social_media %></a></td>
+      <td class="td-right"><a href="http://www.twitter.com/<%= @contact.social_media.slice(1..-1) %>" class="social-link" target="_blank"><%= @contact.social_media %></a></td>
     </tr>
   </table>
-
-  <a href="/<%= @contact.id %>/edit">Edit</a>
 </section>
+
+<div class="edit-1"><i class="fa fa-pencil-square-o"></i><a href="/<%= @contact.id %>/edit" class="edit-link"> Edit</a></div>
+<div class="edit-2"><i class="fa fa-times-circle"></i><a href="/<%= @contact.id %>/edit" class="edit-link"> Delete</a></div>

@@ -147,3 +147,19 @@ footer {
 .td-right {
   text-align: right;
 }
+
+.edit-1, .edit-2 {
+  display: inline-block;
+  margin: 5px;
+  font-size: 1.4rem
+}
+
+.edit-link {
+  color: #8EA38F;
+  -webkit-transition: all 300ms ease;
+}
+
+.edit-link:hover {
+  color: #eff2ef;
+  text-decoration: none;
+}
