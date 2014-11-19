@@ -110,8 +110,16 @@ footer {
   width: 300px;
 }
 
+#footer-link {
+  -webkit-transition: all 300ms ease;
+}
+
+.list {
+  color: #C9C2B5;
+}
+
 .list:visited, .social-link:visited {
-  color: ;
+  color: #C9C2B5;
 }
 
 .list:hover, .social-link:hover {
