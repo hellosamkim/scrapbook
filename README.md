@@ -3,20 +3,20 @@ Scrapbook
 
 My Scrapbook for code
 
-- ##Project Euler
+- ###Project Euler
 Solutions to problems on https://projecteuler.net/
 
-- ##Mars Rover
+- ###Mars Rover
 Mars Rovers Application built in Ruby
 
-- ##Hover Pad
+- ###Hover Pad
 Simple Pixel Colouring Application built in Javascript
 
-- ##CRM
+- ###CRM
 Simple Customer Relationship Management Application built in Ruby
 
-- ##Contact List
+- ###Contact List
 CRM Application implemented on the Web
 
-- ##Rspec
+- ###Rspec
 Solutions for Rspec Testing exercises
