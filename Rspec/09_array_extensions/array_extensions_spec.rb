@@ -2,7 +2,7 @@ require "array_extensions" # we don't call it "array.rb" since that would be con
 
 describe Array do
 
-  describe "#sum" do
+  describe '#sum' do
     # it "has a #sum method" do
     #   [].to respond_to(:sum)
     #   Array.to respond_to(:sum)
