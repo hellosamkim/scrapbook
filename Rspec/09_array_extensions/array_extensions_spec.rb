@@ -26,7 +26,7 @@ describe Array do
     end
 
     it "should add all of the elements" do
-      expect([1,2,4]).sum.to eq(7)
+      expect([1,2,4].sum).to eq(7)
     end
   end
 
@@ -36,7 +36,7 @@ describe Array do
     end
 
     it "returns a new array containing the squares of each element" do
-      expect([1,2,3]).square.to eq([1,4,9])
+      expect([1,2,3].square).to eq([1,4,9])
     end
   end
 

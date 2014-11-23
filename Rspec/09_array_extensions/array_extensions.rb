@@ -2,9 +2,18 @@ class Array
   attr_accessor :sum
 
   def sum
-    # todo: bug fix (Getting undefined method 'sum')
-    inject(0) do |sum, n|
-      sum + n
+    inject(0) { |sum, x| sum + x }
+  end
+
+  def square
+    if self.empty?
+      []
+    else
+      self.collect { |x| x *= x }
     end
+  end
+
+  def square!
+    self.collect! { |x| x *= x }
   end
 end

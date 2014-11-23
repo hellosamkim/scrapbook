@@ -7,7 +7,7 @@ describe "Timer" do
 
   # before each test create a new instance of the class Timer
   # and store it into the instance variable named @timer
-  before(:each) do
+  before do
     @timer = Timer.new
   end
 
