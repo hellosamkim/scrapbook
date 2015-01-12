@@ -1,4 +1,5 @@
 class Rover
+  COMPASS = %w[N,E,S,W]
   def grid
     print "Please enter the size of Mars (eg 4 x 5): "
     @grid_size = gets.chomp.gsub(/x/, "").split(" ")
@@ -47,10 +48,10 @@ class Rover
 
   def print_menu
     puts ""
-    puts "Menu"
-    puts "[1] Move Rover"
-    puts "[2] Remove Rover"
-    puts "[3] Quit Mars Rover"
+    puts "    -Menu-                            -Legend-"
+    puts "[1] Move Rover                        L : Left"
+    puts "[2] Remove Rover                      R : Right"
+    puts "[3] Quit Mars Rover                   M : Move"
     print "Please Select one of the options: "
     user_input = gets.chomp.to_i
     case user_input
@@ -65,9 +66,22 @@ class Rover
 
   def move_rover
     print "Please select which Rover to move: "
-    user_input = gets.chomp.to_i
+    @rover_select = gets.chomp.to_i
+    puts "Please enter the moves for this Rover (eg LRLRLRMMMRLM): "
+    rover_moves = gets.chomp.upcase.split("")
     
+    rover_moves.each do |rover_move|
+      unless rover_move == "M"
+        rotate(@rover_select, rover_move)
+      else
+        move(@rover_select, rover_move)
+      end
+    end
   end
+
+  def rotate(rover, rover_move)
+    
+  end 
 
   def splat_screen
   puts "   _____ _                 _    _        __                       _                                "
