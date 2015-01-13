@@ -75,6 +75,8 @@ class Rover
 
     @rover_facing = @rovers_deployed.fetch(:"#{@rover_select}")[2]
     @rover_compass = COMPASS.index(@rover_facing)
+    @rover_x = @rovers_deployed.fetch(:"#{@rover_select}")[0]
+    @rover_y = @rovers_deployed.fetch(:"#{@rover_select}")[1]
     rover_moves.each do |rover_move|
       unless rover_move == "M"
         rotate(rover_move)
@@ -82,7 +84,7 @@ class Rover
         move(rover_move)
       end
     end
-    update_rover
+    update_rover(@rover_facing, @rover_x, @rover_y)
   end
 
   def rotate(rover_move)
@@ -101,11 +103,21 @@ class Rover
   end
 
   def move(rover_move)
-
+    case @rover_facing
+    when "N"
+      @rover_y += 1
+    when "E"
+      @rover_x += 1
+    when "S"
+      @rover_y -= 1
+    else
+      @rover_x -= 1
+    end
   end
 
-  def update_rover
-    
+  def update_rover(direction, x, y)
+    @rovers_deployed[:"#{@rover_select}"] = [x, y, direction]
+    deployed_rovers
   end
 
   def add_rover
