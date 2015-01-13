@@ -1,5 +1,5 @@
 class Rover
-  COMPASS = %w[N,E,S,W]
+  COMPASS = %w[N E S W]
   def grid
     print "Please enter the size of Mars (eg 4 x 5): "
     @grid_size = gets.chomp.gsub(/x/, "").split(" ")
@@ -41,7 +41,7 @@ class Rover
     system "clear"
     puts "..: Deployed Rovers :.."
     @rovers_deployed.each do |rover, deployed|
-      puts "Rover #{rover}:  Pos-X: #{deployed[0]}  Pos-Y: #{deployed[1]}  Direction: #{deployed[2]}"
+      puts "Rover #{rover}.  Pos-X: #{deployed[0]}  Pos-Y: #{deployed[1]}  Facing: #{deployed[2]}"
     end
     print_menu
   end
@@ -50,14 +50,17 @@ class Rover
     puts ""
     puts "    -Menu-                            -Legend-"
     puts "[1] Move Rover                        L : Left"
-    puts "[2] Remove Rover                      R : Right"
-    puts "[3] Quit Mars Rover                   M : Move"
+    puts "[2] Add Rover                         R : Right"
+    puts "[3] Remove Rover                      M : Move"
+    puts "[4] Quit Mars Rover                           "
     print "Please Select one of the options: "
     user_input = gets.chomp.to_i
     case user_input
     when 1
       move_rover
     when 2
+      add_rover
+    when 3
       remove_rover
     else
       splat_screen
@@ -69,19 +72,45 @@ class Rover
     @rover_select = gets.chomp.to_i
     puts "Please enter the moves for this Rover (eg LRLRLRMMMRLM): "
     rover_moves = gets.chomp.upcase.split("")
-    
+
+    @rover_facing = @rovers_deployed.fetch(:"#{@rover_select}")[2]
+    @rover_compass = COMPASS.index(@rover_facing)
     rover_moves.each do |rover_move|
       unless rover_move == "M"
-        rotate(@rover_select, rover_move)
+        rotate(rover_move)
       else
-        move(@rover_select, rover_move)
+        move(rover_move)
       end
     end
   end
 
-  def rotate(rover, rover_move)
-    
+  def rotate(rover_move)
+    if rover_move == "L"
+      @rover_compass = COMPASS.index(@rover_facing) - 1
+      if @rover_compass < 0
+        @rover_compass = 3
+      end
+    else
+      @rover_compass = COMPASS.index(@rover_facing) + 1
+      if @rover_compass > 3
+        @rover_compass = 0
+      end
+    end 
+    @rover_facing = COMPASS.fetch(@rover_compass)
+    puts @rover_facing
   end 
+
+  def move(rover_move)
+
+  end
+
+  def add_rover
+    
+  end
+
+  def remove_rover
+    
+  end
 
   def splat_screen
   puts "   _____ _                 _    _        __                       _                                "
