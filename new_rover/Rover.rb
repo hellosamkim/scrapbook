@@ -82,6 +82,7 @@ class Rover
         move(rover_move)
       end
     end
+    update_rover
   end
 
   def rotate(rover_move)
@@ -97,11 +98,14 @@ class Rover
       end
     end 
     @rover_facing = COMPASS.fetch(@rover_compass)
-    puts @rover_facing
-  end 
+  end
 
   def move(rover_move)
 
+  end
+
+  def update_rover
+    
   end
 
   def add_rover
