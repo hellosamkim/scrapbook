@@ -50,7 +50,7 @@ class Rover
     display_rovers
   end
 
-  def error_rovers
+  def rover_collide
     puts ""
     puts "ALERT. ALERT. ALERT. ALERT"
     puts "ERROR. ERROR. ERROR. ERROR"
@@ -58,6 +58,9 @@ class Rover
     move_rover2
   end
 
+  def rover_fell
+    puts "Fell!"
+  end
 
   def print_menu
     puts ""
@@ -141,7 +144,9 @@ class Rover
     @rovers_deployed.each do |rover, deployed|
       next if rover.to_s.to_i == @rover_select
       if deployed[0] == x && deployed[1] == y
-        error_rovers
+        rover_collide
+      elsif deployed[0] > @grid_x || deployed[1] > @grid_y || x > @grid_x || y > @grid_y
+        rover_fell
       else
         display_rovers
       end
