@@ -34,7 +34,7 @@ class Rover
       @rovers_deployed[:"#{@rover_intervals}"] = [@rover_pos_x.to_i, @rover_pos_y.to_i, @rover_direction.upcase]
       @rover_intervals += 1
     end
-    deployed_rovers
+    check_rover_pos
   end
 
   def display_rovers
@@ -58,11 +58,11 @@ class Rover
     move_rover2
   end
 
-  def rover_fell(rover)
+  def rover_fell(rover, x, y, direction)
     puts ""
     puts "ALERT. ALERT. ALERT. ALERT"
     puts "ERROR. ERROR. ERROR. ERROR"
-    puts "Your Rover ID ##{rover}, is going out of Grid. Please Move the Rover."
+    puts "Your Rover ID ##{rover}, is going out of Grid (#{x}, #{y} facing #{direction}). Please Move the Rover."
     move_rover2
   end
 
@@ -86,7 +86,7 @@ class Rover
       splat_screen
     else
       puts "Please enter a valid option"
-      sleep(0.2)
+      sleep(0.5)
       display_rovers
     end
   end
@@ -145,7 +145,7 @@ class Rover
 
   def update_rover(direction, x, y)
     @rovers_deployed[:"#{@rover_select}"] = [x, y, direction]
-    @rovers_deployed.each do |rover, deployed|
+    @rovers_deployed.to_a.each do |rover, deployed|
       next if rover.to_s.to_i == @rover_select
       if deployed[0] == x && deployed[1] == y
         rover_collide
@@ -155,9 +155,9 @@ class Rover
   end
 
   def check_rover_pos
-    @rovers_deployed.each do |rover, deployed|
+    @rovers_deployed.to_a.each do |rover, deployed|
       if deployed[0] > @grid_x || deployed[1] > @grid_y
-        rover_fell(rover)
+        rover_fell(rover, deployed[0], deployed[1], deployed[2]) 
       else
         puts "#{deployed[0]} > #{@grid_x}    #{deployed[1]} > #{@grid_y}"
         display_rovers
