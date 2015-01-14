@@ -3,8 +3,8 @@ class Rover
   def grid
     print "Please enter the size of Mars (eg 4 x 5): "
     @grid_size = gets.chomp.gsub(/x/, "").split(" ")
-    @grid_x = @grid_size[0]
-    @grid_y = @grid_size[1]
+    @grid_x = @grid_size[0].to_i
+    @grid_y = @grid_size[1].to_i
     deploy_rovers
   end
 
@@ -58,8 +58,12 @@ class Rover
     move_rover2
   end
 
-  def rover_fell
-    puts "Fell!"
+  def rover_fell(rover)
+    puts ""
+    puts "ALERT. ALERT. ALERT. ALERT"
+    puts "ERROR. ERROR. ERROR. ERROR"
+    puts "Your Rover ID ##{rover}, is going out of Grid. Please Move the Rover."
+    move_rover2
   end
 
   def print_menu
@@ -145,12 +149,20 @@ class Rover
       next if rover.to_s.to_i == @rover_select
       if deployed[0] == x && deployed[1] == y
         rover_collide
-      elsif deployed[0] > @grid_x || deployed[1] > @grid_y || x > @grid_x || y > @grid_y
-        rover_fell
+      end
+      check_rover_pos
+    end 
+  end
+
+  def check_rover_pos
+    @rovers_deployed.each do |rover, deployed|
+      if deployed[0] > @grid_x || deployed[1] > @grid_y
+        rover_fell(rover)
       else
+        puts "#{deployed[0]} > #{@grid_x}    #{deployed[1]} > #{@grid_y}"
         display_rovers
       end
-    end 
+    end
   end
 
   def add_rover
