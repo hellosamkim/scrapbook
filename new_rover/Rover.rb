@@ -41,7 +41,7 @@ class Rover
     system "clear"
     puts "..: Deployed Rovers :.."
     @rovers_deployed.each do |rover, deployed|
-      puts "Rover #{rover}.  Pos-X: #{deployed[0]}  Pos-Y: #{deployed[1]}  Facing: #{deployed[2]}"
+      puts "Rover ID ##{rover}.  Pos-X: #{deployed[0]}  Pos-Y: #{deployed[1]}  Facing: #{deployed[2]}"
     end
     print_menu
   end
@@ -160,7 +160,10 @@ class Rover
   end
 
   def remove_rover
-
+    print "Please enter the Rover ID you would like to remove: "
+    remove_rover = gets.chomp.to_i
+    @rovers_deployed.delete(:"#{remove_rover}")
+    display_rovers
   end
 
   def splat_screen
