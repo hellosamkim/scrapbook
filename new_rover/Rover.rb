@@ -42,16 +42,15 @@ class Rover
     puts "..: Deployed Rovers :.."
     @rovers_deployed.each do |rover, deployed|
       puts "Rover #{rover}.  Pos-X: #{deployed[0]}  Pos-Y: #{deployed[1]}  Facing: #{deployed[2]}"
-    end 
+    end
+    print_menu
   end
 
   def deployed_rovers
     display_rovers
-    print_menu
   end
 
   def error_rovers
-    display_rovers
     puts ""
     puts "ALERT. ALERT. ALERT. ALERT"
     puts "ERROR. ERROR. ERROR. ERROR"
@@ -76,8 +75,12 @@ class Rover
       add_rover
     when 3
       remove_rover
-    else
+    when 4
       splat_screen
+    else
+      puts "Please enter a valid option"
+      sleep(0.2)
+      display_rovers
     end
   end
 
@@ -135,14 +138,12 @@ class Rover
 
   def update_rover(direction, x, y)
     @rovers_deployed[:"#{@rover_select}"] = [x, y, direction]
-
     @rovers_deployed.each do |rover, deployed|
+      next if rover.to_s.to_i == @rover_select
       if deployed[0] == x && deployed[1] == y
-        puts "#{rover} #{deployed[0]} #{x}"
-        puts "#{rover} #{deployed[1]} #{y}"
+        error_rovers
       else
-        puts "#{rover} #{deployed[0]} #{x}"
-        puts "#{rover} #{deployed[1]} #{y}"
+        display_rovers
       end
     end 
   end
