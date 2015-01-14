@@ -37,14 +37,28 @@ class Rover
     deployed_rovers
   end
 
-  def deployed_rovers
+  def display_rovers
     system "clear"
     puts "..: Deployed Rovers :.."
     @rovers_deployed.each do |rover, deployed|
       puts "Rover #{rover}.  Pos-X: #{deployed[0]}  Pos-Y: #{deployed[1]}  Facing: #{deployed[2]}"
-    end
+    end 
+  end
+
+  def deployed_rovers
+    display_rovers
     print_menu
   end
+
+  def error_rovers
+    display_rovers
+    puts ""
+    puts "ALERT. ALERT. ALERT. ALERT"
+    puts "ERROR. ERROR. ERROR. ERROR"
+    puts "Your Rovers have Landed on the same spot. Please Move the Rover."
+    move_rover2
+  end
+
 
   def print_menu
     puts ""
@@ -70,6 +84,10 @@ class Rover
   def move_rover
     print "Please select which Rover to move: "
     @rover_select = gets.chomp.to_i
+    move_rover2
+  end
+
+  def move_rover2
     puts "Please enter the moves for this Rover (eg LRLRLRMMMRLM): "
     rover_moves = gets.chomp.upcase.split("")
 
@@ -117,7 +135,16 @@ class Rover
 
   def update_rover(direction, x, y)
     @rovers_deployed[:"#{@rover_select}"] = [x, y, direction]
-    deployed_rovers
+
+    @rovers_deployed.each do |rover, deployed|
+      if deployed[0] == x && deployed[1] == y
+        puts "#{rover} #{deployed[0]} #{x}"
+        puts "#{rover} #{deployed[1]} #{y}"
+      else
+        puts "#{rover} #{deployed[0]} #{x}"
+        puts "#{rover} #{deployed[1]} #{y}"
+      end
+    end 
   end
 
   def add_rover
