@@ -24,15 +24,15 @@ class Rover
 
   def deploy_rovers
     @rovers_deployed = {}
-    x = 1
+    @rover_intervals = 1
     @rover_amount.times do 
-      print "Please enter Rover #{x}'s position (eg 4 5 N): "
+      print "Please enter Rover #{@rover_intervals}'s position (eg 4 5 N): "
       @rover_pos = gets.chomp.split(" ")
       @rover_pos_x = @rover_pos[0]
       @rover_pos_y = @rover_pos[1]
       @rover_direction = @rover_pos[2]
-      @rovers_deployed[:"#{x}"] = [@rover_pos_x.to_i, @rover_pos_y.to_i, @rover_direction.upcase]
-      x += 1
+      @rovers_deployed[:"#{@rover_intervals}"] = [@rover_pos_x.to_i, @rover_pos_y.to_i, @rover_direction.upcase]
+      @rover_intervals += 1
     end
     deployed_rovers
   end
@@ -149,11 +149,18 @@ class Rover
   end
 
   def add_rover
-    
+    print "Please enter Rover #{@rover_intervals}'s position (eg 4 5 N): "
+    @rover_pos = gets.chomp.split(" ")
+    @rover_pos_x = @rover_pos[0]
+    @rover_pos_y = @rover_pos[1]
+    @rover_direction = @rover_pos[2]
+    @rovers_deployed[:"#{@rover_intervals}"] = [@rover_pos_x.to_i, @rover_pos_y.to_i, @rover_direction.upcase]
+    @rover_intervals += 1
+    display_rovers
   end
 
   def remove_rover
-    
+
   end
 
   def splat_screen
