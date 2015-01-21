@@ -35,7 +35,7 @@ class Rover
       @rover_intervals += 1
     end
     check_rover_pos
-  end
+  end 
 
   def display_rovers
     system "clear"
@@ -68,11 +68,11 @@ class Rover
 
   def print_menu
     puts ""
-    puts "    -Menu-                            -Legend-"
-    puts "[1] Move Rover                        L : Left"
-    puts "[2] Add Rover                         R : Right"
-    puts "[3] Remove Rover                      M : Move"
-    puts "[4] Quit Mars Rover                           "
+    puts "    -Menu-                            -Legend-         -Grid Size-             "
+    puts "[1] Move Rover                        L : Left          #{@grid_x} x #{@grid_y} " 
+    puts "[2] Add Rover                         R : Right                                " 
+    puts "[3] Remove Rover                      M : Move                                 "
+    puts "[4] Quit Mars Rover                                                            " 
     print "Please Select one of the options: "
     user_input = gets.chomp.to_i
     case user_input
@@ -155,11 +155,11 @@ class Rover
   end
 
   def check_rover_pos
-    @rovers_deployed.to_a.each do |rover, deployed|
+    @rovers_deployed.each do |rover, deployed|
       if deployed[0] > @grid_x || deployed[1] > @grid_y
         rover_fell(rover, deployed[0], deployed[1], deployed[2]) 
       else
-        puts "#{deployed[0]} > #{@grid_x}    #{deployed[1]} > #{@grid_y}"
+        # puts "#{deployed[0]} > #{@grid_x}    #{deployed[1]} > #{@grid_y}"
         display_rovers
       end
     end
@@ -184,20 +184,15 @@ class Rover
   end
 
   def splat_screen
-  puts "   _____ _                 _    _        __                       _                                "
-  puts "  |_   _| |               | |  ( )      / _|                     (_)                               "
-  puts "    | | | |__   __ _ _ __ | | _|/ ___  | |_ ___  _ __   _   _ ___ _ _ __   __ _                    "
-  puts "    | | | '_ \ / _` | '_ \| |/ / / __| |  _/ _ \| '__| | | | / __| | '_ \ / _` |                   "
-  puts "    | | | | | | (_| | | | |   <  \__ \ | || (_) | |    | |_| \__ \ | | | | (_| |                   "
-  puts "    \_/ |_| |_|\__,_|_| |_|_|\_\ |___/ |_| \___/|_|     \__,_|___/_|_| |_|\__, |                   "
-  puts "                                                                           __/ |                   "
-  puts "                                                                          |___/                    "
-  puts "                                                         _____                   _   ___           "
-  puts "                                                        /  ___|                 | | / (_)          "
-  puts "                                                ______  \ `--.  __ _ _ __ ___   | |/ / _ _ __ ___  "
-  puts "                                               |______|  `--. \/ _` | '_ ` _ \  |    \| | '_ ` _ \ "
-  puts "                                                        /\__/ / (_| | | | | | | | |\  \ | | | | | |"
-  puts "                                                        \____/ \__,_|_| |_| |_| \_| \_/_|_| |_| |_|"
+  puts ""
+  print "Exiting Mars Rovers"
+    4.times do
+      sleep (rand(0.1..0.3))
+      print "."
+    end
+  system "clear"
+  puts "Thank you for using Mars Rovers."
+  puts "Made by: Sam Kim"
   end
 end
 
