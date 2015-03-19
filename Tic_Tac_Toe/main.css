@@ -25,7 +25,7 @@ body {
   height: 150px;
   width: 150px;
   border: 3px solid rgba(255, 248, 243, 0.8);
-  background-color: rgba(158, 177, 201, 0.4);
+  background-color: rgba(158, 169, 189, 0.6);
   float: left;
   text-align: center;
   font-size: 150px;
@@ -35,8 +35,4 @@ body {
 .game-menu {
   text-align: center;
   margin-top: 20px;
-}
-
-#player-x {
-  color: rgba(92, 221, 92, 0.6);
 }

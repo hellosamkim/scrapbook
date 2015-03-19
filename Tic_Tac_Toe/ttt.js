@@ -1,70 +1,48 @@
 $(document).ready(function(){
-  var SOLUTIONS = ["1,2,3", "4,5,6", "7,8,9", "1,4,7", "2,5,8", "3,6,9", "1,5,9", "3,5,7"]
+  var SOLUTIONS = ["1,2,3", "4,5,6", "7,8,9", "1,4,7", "2,5,8", "3,6,9", "1,5,9", "3,5,7"];
+  AVAIL_POS = [1,2,3,4,5,6,7,8,9]
+  turn = 0;
+  computer_selection = [];
+  user_selection = [];
 
-  gameStart()
-  function gameStart(){
-    insertGrid()
-    $('#player').on("click", playerGame)
-    $('#computer').on("click", computerGame)
-  };
+  game();
 });
 
-function insertGrid(){
-  for (var i=0; i < 3; i++) {
-    var rows = '<div class="rows"></div>';
-    $('.game').append(rows);
-  };
-  for (var j=0; j < 3; j++) {
-    var boxes = $('<div class="boxes"></div>');
-    $('.rows').append(boxes); 
-  };
-  for (var x=0; x < 9; x++) {
-    $('.boxes').eq(x).attr("id", "box" + (x + 1))
-  }
-  $("#box1").css({'border-radius': '15px 0 0 0'});
-  $("#box3").css({'border-radius': '0 15px 0 0'});
-  $("#box7").css({'border-radius': '0 0 0 15px'});
-  $("#box9").css({'border-radius': '0 0 15px 0'});
-};
+function game(){
 
-function playerGame(){
-  var turn = 0;
-  var freeSpaces = [1,2,3,4,5,6,7,8,9]
-  var player1 = [];
-  var player2 = [];
-  $('.boxes').empty()
-  playerMove(turn);
-};
-
-function computerGame(){
-  
-};
-
-function  playerMove(turn){
-  if (turn % 2 === 0){
-    console.log("A")
-    movePreLogic('rgba(255, 164, 169, 0.8)', 'X', turn);
-  } else {
-    console.log("B")
-    movePreLogic('rgba(255, 250, 164, 0.8)', 'O', turn)
-  };
-};
-
-function movePreLogic(color, sign, turn){
   $('.boxes').hover(
-    function(){
-      if (!$(this).text()) {
-        $(this).css({'background-color': color, 'cursor': 'pointer', 'color': color})
-      } else {
-        $(this).css({'cursor': 'initial'})
-      }
+    function() {
+      if (!$(this).text()){
+        $(this).css({'background-color': 'rgba(206, 212, 222, 0.6)'})
+      };
     }, function(){
-      $(this).css({'background-color': 'rgba(158, 177, 201, 0.4)', 'cursor': 'pointer'})
+      $(this).css({'background-color': 'rgba(158, 169, 189, 0.6)'})
     }
   );
   $('.boxes').on('click', function(){
-    $(this).text(sign)
-    turn++;
-    playerMove(turn);
+    var pos = $(this).attr('id')
+    var index = AVAIL_POS.indexOf(Number(pos));
+    if (turn % 2 === 0) {
+      $(this).text("X");
+      AVAIL_POS.splice(index, 1)
+      turn++;
+      $(this).off('click');
+    };
+    computerSelection();
   });
-}
+};
+
+function computerSelection(){
+  if (AVAIL_POS.length > 0) {
+    var select = AVAIL_POS[Math.floor(Math.random() * AVAIL_POS.length)];
+    var index = AVAIL_POS.indexOf(Number(select));
+    $('#' + select).text("O").off('click');
+    computer_selection.push(select);
+    console.log(computer_selection);
+    AVAIL_POS.splice(index, 1)
+    turn++;
+  }
+};
+
+
+
