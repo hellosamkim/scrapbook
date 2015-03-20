@@ -2,8 +2,8 @@ $(document).ready(function(){
   solutions = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]];
   avail_pos = [1,2,3,4,5,6,7,8,9]
   turn = 0;
-  player_wins = [];
-  computer_wins = [];
+  player_wins = 0;
+  computer_wins = 0;
   computer_selection = [];
   user_selection = [];
   game();
@@ -89,7 +89,7 @@ function checkWinner(selection, user){
         return false;
       };
     } else {
-      if (turn % 9 === 0) {
+      if (user_selection.length + computer_selection.length === 9) {
         alert("It is a Tie!")
         gameAgain();
         return false;
