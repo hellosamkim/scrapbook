@@ -2,9 +2,10 @@ $(document).ready(function(){
   solutions = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]];
   avail_pos = [1,2,3,4,5,6,7,8,9]
   turn = 0;
+  player_wins = [];
+  computer_wins = [];
   computer_selection = [];
   user_selection = [];
-
   game();
 });
 
@@ -23,20 +24,24 @@ function game(){
     var index = avail_pos.indexOf(Number(pos));
     if (turn % 2 === 0) {
       $(this).text("X");
+      // Remove clicked selection from available positions
       avail_pos.splice(index, 1)
       user_selection.push(Number(pos));
       turn++;
+      // check winner if user has more than 2 selected positions
       if (user_selection.length > 2) {
         checkWinner(user_selection, "player");
       };
       $(this).off('click');
     };
+    // runs the AI
     computerLogic();
   });
 };
 
 function computerLogic(){
   if (avail_pos.length > 0){
+    // bestSelection is our AI for figuring out placement
     var select = bestSelection();
     var index = avail_pos.indexOf(Number(select));
     $('#' + select).text("O").off('click');
@@ -55,16 +60,15 @@ function bestSelection(){
     if (avail_pos.indexOf(5) >= 0){
       return avail_pos[avail_pos.indexOf(5)];
     } else if (user_selection[0] === 5){
-      return avail_pos[avail_pos.indexOf(1)];
+      return avail_pos[avail_pos.indexOf(4)];
     };
   } else {
+    // logic for figuring out best placement
     if (selectionLogic(computer_selection).length > 0) {
-      console.log(best_pick)
       best_pick = Number(selectionLogic(computer_selection));
       return avail_pos[avail_pos.indexOf(best_pick)];
     } else if (selectionLogic(user_selection).length > 0) {
       best_pick = Number(selectionLogic(user_selection));
-      console.log(best_pick)
       return avail_pos[avail_pos.indexOf(best_pick)];
     } else {
       return avail_pos[Math.floor(Math.random() * avail_pos.length)];
@@ -77,20 +81,24 @@ function checkWinner(selection, user){
     if (selection.indexOf(e[0]) >= 0 && selection.indexOf(e[1]) >= 0 && selection.indexOf(e[2]) >= 0) {
       if (user === "player") {
         alert("You Win!");
+        gameAgain();
         return false;
       } else {
         alert("Computer Wins!")
+        gameAgain();
         return false;
       };
     } else {
       if (turn % 9 === 0) {
         alert("It is a Tie!")
+        gameAgain();
         return false;
       };
     };
   });
 };
 
+// Main logic for figuring out best placement to win the game
 function selectionLogic(selection){
   var select_picks = [];
   $(solutions).each(function(idx, e){
@@ -114,4 +122,14 @@ function selectionLogic(selection){
   return select_picks;
 };
 
+function gameAgain(){
+  console.log(turn);
+  alert("Play Again!");
+  $('.boxes').empty();
+  $('.boxes').on('click');
+  avail_pos = [1,2,3,4,5,6,7,8,9];
+  computer_selection = [];
+  user_selection = [];
+  game();
+};
 
