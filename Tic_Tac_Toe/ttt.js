@@ -52,15 +52,19 @@ function computerLogic(){
 function bestSelection(){
   var best_pick = 0;
   if (computer_selection.length < 1){
-    return avail_pos[Math.floor(Math.random() * avail_pos.length)];
+    if (avail_pos.indexOf(5) >= 0){
+      return avail_pos[avail_pos.indexOf(5)];
+    } else if (user_selection[0] === 5){
+      return avail_pos[avail_pos.indexOf(1)];
+    };
   } else {
-    if (selectionLogic(user_selection).length > 0) {
-      best_pick = Number(selectionLogic(user_selection));
-      console.log(best_pick)
-      return avail_pos[avail_pos.indexOf(best_pick)];
-    } else if (selectionLogic(computer_selection).length > 0) {
+    if (selectionLogic(computer_selection).length > 0) {
       console.log(best_pick)
       best_pick = Number(selectionLogic(computer_selection));
+      return avail_pos[avail_pos.indexOf(best_pick)];
+    } else if (selectionLogic(user_selection).length > 0) {
+      best_pick = Number(selectionLogic(user_selection));
+      console.log(best_pick)
       return avail_pos[avail_pos.indexOf(best_pick)];
     } else {
       return avail_pos[Math.floor(Math.random() * avail_pos.length)];
