@@ -2,8 +2,6 @@ $(document).ready(function(){
   solutions = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]];
   avail_pos = [1,2,3,4,5,6,7,8,9]
   turn = 0;
-  player_wins = 0;
-  computer_wins = 0;
   computer_selection = [];
   user_selection = [];
   game();
@@ -33,18 +31,17 @@ function game(){
         checkWinner(user_selection, "player");
       };
       $(this).off('click');
-    };
-    // runs the AI
-    computerLogic();
+    }
+    setTimeout(computerLogic, 1000);
   });
 };
 
 function computerLogic(){
-  if (avail_pos.length > 0){
+  if (avail_pos.length > 0 && turn % 2 === 1){
     // bestSelection is our AI for figuring out placement
     var select = bestSelection();
     var index = avail_pos.indexOf(Number(select));
-    $('#' + select).text("O").off('click');
+    $('#' + select).text("O").off('click')
     computer_selection.push(select);
     avail_pos.splice(index, 1)
     turn++;
@@ -81,10 +78,12 @@ function checkWinner(selection, user){
     if (selection.indexOf(e[0]) >= 0 && selection.indexOf(e[1]) >= 0 && selection.indexOf(e[2]) >= 0) {
       if (user === "player") {
         alert("You Win!");
+        winnerScore("player");
         gameAgain();
         return false;
       } else {
         alert("Computer Wins!")
+        winnerScore("player");
         gameAgain();
         return false;
       };
@@ -123,13 +122,20 @@ function selectionLogic(selection){
 };
 
 function gameAgain(){
+  $('.boxes').on('click');
   console.log(turn);
   alert("Play Again!");
   $('.boxes').empty();
-  $('.boxes').on('click');
   avail_pos = [1,2,3,4,5,6,7,8,9];
   computer_selection = [];
   user_selection = [];
   game();
 };
 
+function winnderScore(winner) {
+  var x_score = 0;
+  var o_score = 0;
+  if (winner) {
+
+  }
+}
